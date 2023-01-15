@@ -26,10 +26,6 @@ variable "ram" {
   type    = string
 }
 
-variable "cloudinit_disk_id" {
-  type    = string
-}
-
 variable "network_id" {
   type    = string
 }

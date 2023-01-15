@@ -7,7 +7,6 @@ module "node" {
   pool               = libvirt_pool.default.name
   cpu                = var.nodes_cpu
   ram                = var.nodes_ram
-  cloudinit_disk_id  = libvirt_cloudinit_disk.common-init.id
   network_id         = libvirt_network.default.id
 }
 
