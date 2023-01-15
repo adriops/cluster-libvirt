@@ -48,7 +48,7 @@ variable "nodes_ram" {
 
 variable "nodes_disk_size" {
   type    = number
-  default = 42949672960 #40GiB in bytes
+  default = 16106127360 #15GiB in bytes
 }
 
 variable "nodes_cloud_image_path" {
