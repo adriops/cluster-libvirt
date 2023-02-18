@@ -49,7 +49,12 @@ resource "libvirt_domain" "default" {
   }
   network_interface {
     network_id     = var.network_id
+    addresses      = ["10.17.3.${sum([count.index, 2])}"]
     hostname       = "${var.name}-${count.index}"
     wait_for_lease = true
   }
+  depends_on = [
+    libvirt_cloudinit_disk.cloud-init,
+    libvirt_volume.system
+  ]
 }

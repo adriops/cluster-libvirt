@@ -1,9 +1,4 @@
 # Network
-variable "net_mode" {
-  type    = string
-  default = "nat"
-}
-
 variable "net_name" {
   type    = string
   default = "cluster-net"

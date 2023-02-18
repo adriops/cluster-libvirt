@@ -30,7 +30,7 @@ net_domain = "k3s.local"
 pool_name = "k3s"
 pool_path = "/var/lib/libvirt/k3s_pool"
 
-# Resources of nodes
+# Nodes
 nodes_quantity = 3
 nodes_name = "k3s-node"
 nodes_cpu = 1
