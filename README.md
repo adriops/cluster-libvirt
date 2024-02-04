@@ -10,7 +10,7 @@ Packages:
   * `qemu-base 7.2.0-1`
 
 Terraform providers:
-  * `dmacvicar/libvirt 0.7.1`
+  * `dmacvicar/libvirt 0.7.6`
 
 # How to use
 
@@ -25,6 +25,7 @@ Example of `terraform.tfvars`
 # Network
 net_name = "k3s-net"
 net_domain = "k3s.local"
+net_dns_forwarder = "8.8.8.8"
 
 # Storage
 pool_name = "k3s"
