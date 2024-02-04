@@ -10,7 +10,7 @@ resource "libvirt_network" "default" {
     enabled = true
     local_only = false
     forwarders {
-      address = "1.1.1.1"
+      address = var.net_dns_forwarder
     } 
   }
 }

@@ -9,6 +9,11 @@ variable "net_domain" {
   default = "cluster.local"
 }
 
+variable "net_dns_forwarder" {
+  type    = string
+  default = "8.8.8.8"
+}
+
 # Storage
 variable "pool_name" {
   type    = string
