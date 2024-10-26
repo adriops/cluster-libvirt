@@ -6,11 +6,11 @@ Terraform files to deploy clusters of virtual machines with `libvirt` provider.
 
 Packages:
   * `terraform 1.9.6`
-  * `libvirt 1:10.7.0-2`
+  * `libvirt 1:10.3.0-1`
   * `qemu-base 9.1.0-2`
 
 Terraform providers:
-  * `dmacvicar/libvirt 0.7.6`
+  * `dmacvicar/libvirt 0.8.1`
 
 # How to use
 
