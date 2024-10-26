@@ -2,7 +2,7 @@ terraform {
   required_providers {
     libvirt = {
       source = "dmacvicar/libvirt"
-      version = "~> 0.7.6"
+      version = "~> 0.8.1"
     }
   }
 }
@@ -43,6 +43,9 @@ resource "libvirt_domain" "default" {
   memory    = var.ram
   running   = true
   cloudinit = libvirt_cloudinit_disk.cloud-init[count.index].id
+  cpu {
+    mode = "host-passthrough"
+  }
   disk {
     volume_id = libvirt_volume.system[count.index].id
     scsi      = "true"

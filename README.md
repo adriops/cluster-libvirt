@@ -5,9 +5,9 @@ Terraform files to deploy clusters of virtual machines with `libvirt` provider.
 # Requisites
 
 Packages:
-  * `terraform 1.3.7-1`
-  * `libvirt 1:8.10.0-1`
-  * `qemu-base 7.2.0-1`
+  * `terraform 1.9.6`
+  * `libvirt 1:10.7.0-2`
+  * `qemu-base 9.1.0-2`
 
 Terraform providers:
   * `dmacvicar/libvirt 0.7.6`
@@ -45,7 +45,7 @@ touch cloud-init.cfg
 ```
 [Cloud-init oficial documentation examples](https://cloudinit.readthedocs.io/en/latest/reference/examples.html)
 
-> :warning: **Create `cloud-init.cfg` at root level**: Terraform expects `cloud-init.cfg` file in repository root directory.
+> :warning: **Create `cloud-init.cfg` at root level**: Terraform expects `cloud-init.cfg` file on root repository directory.
 
 4.  Execute `terraform` commands:
 ```
@@ -63,8 +63,13 @@ Apply complete! Resources: 10 added, 0 changed, 0 destroyed.
 Outputs:
 
 nodes-ip = [
-  "k3s-node-0: 10.17.3.64",
-  "k3s-node-1: 10.17.3.18",
-  "k3s-node-2: 10.17.3.186",
+  "k3s-node-0: 10.17.3.2",
+  "k3s-node-1: 10.17.3.3",
+  "k3s-node-2: 10.17.3.4",
 ]
+```
+
+6. If it's necessary to have access to the nat network from outside of it for `NEW` packages (default rule is for `RELATED` and `ESTABLISH`), you must replace the `iptables` default rule:
+```
+sudo iptables -R LIBVIRT_FWI 1 -d 10.17.3.0/24 -j ACCEPT
 ```
