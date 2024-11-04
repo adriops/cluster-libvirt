@@ -73,3 +73,18 @@ nodes-ip = [
 ```
 sudo iptables -R LIBVIRT_FWI 1 -d 10.17.3.0/24 -j ACCEPT
 ```
+Or remove port mapping behind NAT (for example, for mounting a nfs share volume)
+```
+$ sudo iptables -t nat -v -L LIBVIRT_PRT -n --line-number
+Chain LIBVIRT_PRT (1 references)
+num   pkts bytes target     prot opt in     out     source               destination         
+1        6   390 RETURN     0    --  *      *       10.17.3.0/24         224.0.0.0/24        
+2        0     0 RETURN     0    --  *      *       10.17.3.0/24         255.255.255.255     
+3       33  1980 MASQUERADE  6    --  *      *       10.17.3.0/24        !10.17.3.0/24         masq ports: 1024-65535
+4      149 11308 MASQUERADE  17   --  *      *       10.17.3.0/24        !10.17.3.0/24         masq ports: 1024-65535
+5        0     0 MASQUERADE  0    --  *      *       10.17.3.0/24        !10.17.3.0/24
+```
+```
+$ sudo iptables -t nat -D LIBVIRT_PRT 3
+```
+(Last command should be run twice in order to remove both port mapping rules)
